@@ -35,7 +35,7 @@ SDL_Surface* loadSurface(std::string path);
 
 //The window we'll be rendering to
 SDL_Window* gWindow = NULL;
-	
+
 //The surface contained by the window
 SDL_Surface* gScreenSurface = NULL;
 
@@ -58,24 +58,24 @@ bool init()
 	bool success = true;
 
 	//Initialize SDL
-	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
+	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
-		printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
+		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
 		success = false;
 	}
 	else
 	{
 		//Create window
-		gWindow = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
-		if( gWindow == NULL )
+		gWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+		if (gWindow == NULL)
 		{
-			printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
+			printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
 			success = false;
 		}
 		else
 		{
 			//Get window surface
-			gScreenSurface = SDL_GetWindowSurface( gWindow );
+			gScreenSurface = SDL_GetWindowSurface(gWindow);
 		}
 	}
 
@@ -99,7 +99,7 @@ bool loadMedia()
 	gKeyPressSurfaces[KEY_PRESS_SURFACE_UP] = loadSurface("04_key_presses/up.bmp");
 	if (gKeyPressSurfaces[KEY_PRESS_SURFACE_UP] == NULL)
 	{
-		printf("Failed to load up image!\n"); 
+		printf("Failed to load up image!\n");
 		success = false;
 	}
 
@@ -133,11 +133,11 @@ bool loadMedia()
 void close()
 {
 	//Deallocate surface
-	SDL_FreeSurface( gHelloWorld );
+	SDL_FreeSurface(gHelloWorld);
 	gHelloWorld = NULL;
 
 	//Destroy window
-	SDL_DestroyWindow( gWindow );
+	SDL_DestroyWindow(gWindow);
 	gWindow = NULL;
 
 	//Quit SDL subsystems
@@ -156,19 +156,19 @@ SDL_Surface* loadSurface(std::string path)
 	return loadedSurface;
 }
 
-int main( int argc, char* args[] )
+int main(int argc, char* args[])
 {
 	//Start up SDL and create window
-	if( !init() )
+	if (!init())
 	{
-		printf( "Failed to initialize!\n" );
+		printf("Failed to initialize!\n");
 	}
 	else
 	{
 		//Load media
-		if( !loadMedia() )
+		if (!loadMedia())
 		{
-			printf( "Failed to load media!\n" );
+			printf("Failed to load media!\n");
 		}
 		else
 		{
@@ -182,7 +182,7 @@ int main( int argc, char* args[] )
 			gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT];
 
 			// While application is running
-			while (!quit) 
+			while (!quit)
 			{
 				// Handle Events on Queue
 				while (SDL_PollEvent(&e) != 0)
@@ -198,25 +198,25 @@ int main( int argc, char* args[] )
 						//Select surfaces based on key press
 						switch (e.key.keysym.sym)
 						{
-							case SDLK_UP:
-								gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_UP];
-								break;
+						case SDLK_UP:
+							gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_UP];
+							break;
 
-							case SDLK_DOWN:
-								gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_DOWN];
-								break;
+						case SDLK_DOWN:
+							gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_DOWN];
+							break;
 
-							case SDLK_LEFT:
-								gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_LEFT];
-								break;
+						case SDLK_LEFT:
+							gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_LEFT];
+							break;
 
-							case SDLK_RIGHT:
-								gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_RIGHT];
-								break;
+						case SDLK_RIGHT:
+							gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_RIGHT];
+							break;
 
-							default:
-								gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT];
-								break;
+						default:
+							gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT];
+							break;
 						}
 					}
 
@@ -228,8 +228,8 @@ int main( int argc, char* args[] )
 				}
 			}
 
-            //Hack to get window to stay up
-            while( quit == false ){ while( SDL_PollEvent( &e ) ){ if( e.type == SDL_QUIT ) quit = true; } }
+			//Hack to get window to stay up
+			while (quit == false) { while (SDL_PollEvent(&e)) { if (e.type == SDL_QUIT) quit = true; } }
 		}
 	}
 
