@@ -7,8 +7,8 @@ and may not be redistributed without written permission.*/
 #include <string>
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+const int SCREEN_WIDTH = 1280;
+const int SCREEN_HEIGHT = 960;
 
 //Key press surfaces constants
 enum KeyPressSurfaces
@@ -32,6 +32,8 @@ void close();
 
 //Loads individual image
 SDL_Surface* loadSurface(std::string path);
+
+int main(int argc, char* args[]);
 
 //The window we'll be rendering to
 SDL_Window* gWindow = NULL;
@@ -235,8 +237,15 @@ int main(int argc, char* args[])
 						}
 					}
 
-					// Apply the image
-					SDL_BlitSurface(gCurrentSurface, NULL, gScreenSurface, NULL);
+					// Apply the image stretched
+					//SDL_BlitSurface(gCurrentSurface, NULL, gScreenSurface, NULL);
+
+					SDL_Rect stretchRect;
+					stretchRect.x = 0;
+					stretchRect.y = 0;
+					stretchRect.w = SCREEN_WIDTH;
+					stretchRect.h = SCREEN_HEIGHT;
+					SDL_BlitScaled(gCurrentSurface, NULL, gScreenSurface, &stretchRect);
 
 					// Update the surface
 					SDL_UpdateWindowSurface(gWindow);
