@@ -141,28 +141,14 @@ void close()
 SDL_Texture* loadTexture(std::string path)
 {
 	//The final texture
-	SDL_Texture* newTexture = NULL;
+	SDL_Texture* loadedTexture = IMG_LoadTexture(gRenderer, path.c_str());
 
-	//Load image at specified path
-	SDL_Surface* loadedSurface = IMG_Load(path.c_str());
-	if (loadedSurface == NULL)
+	if (loadedTexture == NULL)
 	{
 		printf("Unable to load image %s SDL_image Error: %s\n", path.c_str(), IMG_GetError());
 	}
-	else
-	{
-		//Create texture from surface pixels
-		newTexture = SDL_CreateTextureFromSurface(gRenderer, loadedSurface);
-		if (newTexture == NULL)
-		{
-			printf("Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
-		}
 
-		//Get rid of old loaded surface
-		SDL_FreeSurface(loadedSurface);
-	}
-
-	return newTexture;
+	return loadedTexture;
 
 }
 
@@ -201,12 +187,31 @@ int main(int argc, char* args[])
 					}
 
 					//Clear screen
+					SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 					SDL_RenderClear(gRenderer);
 
-					//Render texture to screen
-					SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);
+					//Render red filled quad. You can initialise a struct like by providing it's respective member variables like so
+					SDL_Rect fillRect = { SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
+					SDL_SetRenderDrawColor(gRenderer, 0xFF, 0x00, 0x00, 0xFF);
+					SDL_RenderFillRect(gRenderer, &fillRect);
 
-					// Update the surface
+					//Render green outlined quad
+					SDL_Rect outlineRect = { SCREEN_WIDTH / 6, SCREEN_HEIGHT / 6, SCREEN_WIDTH * 2 / 3, SCREEN_HEIGHT * 2 / 3 };
+					SDL_SetRenderDrawColor(gRenderer, 0x00, 0xFF, 0x00, 0xFF);
+					SDL_RenderDrawRect(gRenderer, &outlineRect);
+
+					//Draw blue horizontal line
+					SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0xFF, 0xFF);
+					SDL_RenderDrawLine(gRenderer, 0, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT / 2);
+
+					//Draw vertical line of yellow dots
+					SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0x00, 0xFF);
+					for (int i = 0; i < SCREEN_HEIGHT / 2; i += 4)
+					{
+						SDL_RenderDrawPoint(gRenderer, SCREEN_WIDTH / 2, i);
+					}
+
+					//Update screen
 					SDL_RenderPresent(gRenderer);
 				}
 			}
