@@ -13,3 +13,5 @@ Atlas/x64
 *.vcxproj
 Atlas/Atlas.vcxproj.filters
 Atlas/Atlas.vcxproj.user
+AtlasTest/x64/Debug
+AtlasTest/AtlasTest.vcxproj.user
