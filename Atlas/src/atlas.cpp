@@ -1,8 +1,10 @@
 #include "atlas.h"
 #include <iostream>
 
-bool WorldSystem::TestFunction()
+Map* WorldSystem::CreateMap()
 {
-	std::cout << "Hello" << std::endl;
-	return true;
+	Map* mapPtr = new Map();
+	return mapPtr;
 }
+
+

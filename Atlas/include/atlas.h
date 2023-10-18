@@ -1,14 +1,10 @@
 #pragma once
+#include "Map.h"
 
 class WorldSystem 
 {
 public:
-
-	//WorldSystem();
-	//~WorldSystem();
-
-	bool TestFunction();
-	int Number;
+	Map* CreateMap();
 
 private:
 	int _secretNumber;

@@ -6,6 +6,7 @@ and may not be redistributed without written permission.*/
 #include <SDL_image.h>
 #include <stdio.h>
 #include <string>
+#include <vector>
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 1280;
@@ -52,7 +53,7 @@ private:
 	//Image dimensions
 	int mWidth;
 	int mHeight;
-
+	std::vector<LTexture*> house;
 };
 
 //Starts up SDL and creates window
