@@ -1,5 +1,6 @@
 #pragma once
 #include "Map.h"
+#include "Tile.h"
 
 class WorldSystem 
 {
