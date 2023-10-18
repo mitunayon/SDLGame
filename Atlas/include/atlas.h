@@ -4,7 +4,7 @@
 class WorldSystem 
 {
 public:
-	Map* CreateMap();
+	Map* CreateMap(int width, int height);
 
 private:
 	int _secretNumber;
