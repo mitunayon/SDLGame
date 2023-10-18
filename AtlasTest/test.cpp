@@ -35,3 +35,10 @@ TEST(AtlasMapCreation, GivenEmptyWorld_WhenCreateMap_ThenMapTilesAreNotNull)
 	delete map;
 }
 
+TEST(AtlasTiles, GivenNewTile_WhenGetOccupants_ThenReturnNullGameObject)
+{
+	Tile Tile;
+	GameObject* Occupant = Tile.GetOccupant();
+
+	EXPECT_TRUE(Occupant == nullptr);
+}
