@@ -9,3 +9,7 @@ riderModule.iml
 HelloSDL/x64/Debug
 HelloSDL/HelloSDL.vcxproj
 HelloSDL/HelloSDL.vcxproj.filters
+Atlas/x64
+*.vcxproj
+Atlas/Atlas.vcxproj.filters
+Atlas/Atlas.vcxproj.user
