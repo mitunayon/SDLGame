@@ -11,3 +11,16 @@ GameObject* Tile::GetOccupant()
 {
     return _occupant;
 }
+
+bool Tile::TrySetOccupant(GameObject* gameObject)
+{
+    if (_occupant == nullptr)
+    {
+        _occupant = gameObject;
+        return true;
+    }
+    else 
+    {
+        return false;
+    }
+}

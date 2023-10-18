@@ -42,3 +42,13 @@ TEST(AtlasTiles, GivenNewTile_WhenGetOccupants_ThenReturnNullGameObject)
 
 	EXPECT_TRUE(Occupant == nullptr);
 }
+
+TEST(AtlasTiles, GivenNewTile_WhenSetOccupantAndGetOccupant_ThenReturnGameObjectPtr)
+{
+	Tile Tile;
+	GameObject* TestGameObject = new GameObject;
+	Tile.TrySetOccupant(TestGameObject);
+	GameObject* Occupant = Tile.GetOccupant();
+
+	EXPECT_TRUE(Occupant == TestGameObject);
+}
