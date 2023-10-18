@@ -23,7 +23,7 @@ TEST(AtlasMapCreation, GivenEmptyWorld_WhenCreateMap_ThenMapOfWidthAndHeightIsCr
 	delete map;
 }
 
-TEST(AtlasMapCreation, GivenEmptyWorld_WhenCreateMap_ThenMapContainsSpecificTile)
+TEST(AtlasMapCreation, GivenEmptyWorld_WhenCreateMap_ThenMapTilesAreNotNull)
 {
 	WorldSystem WorldSystem;
 
@@ -34,3 +34,4 @@ TEST(AtlasMapCreation, GivenEmptyWorld_WhenCreateMap_ThenMapContainsSpecificTile
 
 	delete map;
 }
+
