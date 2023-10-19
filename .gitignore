@@ -15,3 +15,5 @@ Atlas/Atlas.vcxproj.filters
 Atlas/Atlas.vcxproj.user
 AtlasTest/x64/Debug
 AtlasTest/AtlasTest.vcxproj.user
+TestRunner/x64/Debug
+WorldSystem/x64/Debug
