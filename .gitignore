@@ -7,10 +7,8 @@ riderModule.iml
 /.idea/.idea.SDLGame/.idea
 /.vs/SDLGame
 HelloSDL/x64/Debug
-HelloSDL/HelloSDL.vcxproj
 HelloSDL/HelloSDL.vcxproj.filters
 Atlas/x64
-*.vcxproj
 Atlas/Atlas.vcxproj.filters
 Atlas/Atlas.vcxproj.user
 AtlasTest/x64/Debug
